@@ -11,4 +11,9 @@ class DryingMethod extends Model
 
     protected $table = 'drying_methods';
     protected $fillable = ['name'];
+
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
 }

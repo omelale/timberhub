@@ -31,4 +31,8 @@ class Product extends Model
         return $this->belongsTo(Specie::class);
     }
 
+    public function dryingMethod()
+    {
+        return $this->belongsTo(DryingMethod::class);
+    }
 }
