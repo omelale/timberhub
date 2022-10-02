@@ -16,4 +16,9 @@ class Grade extends Model
     {
         return $this->hasMany(GradeOption::class);
     }
+
+    public function products()
+    {
+        return $this->hasManyThrough(Product::class, GradeOption::class);
+    }
 }

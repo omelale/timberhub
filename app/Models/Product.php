@@ -40,4 +40,9 @@ class Product extends Model
     {
         return $this->belongsTo(Treatment::class);
     }
+
+    public function gradeOption()
+    {
+        return $this->belongsTo(GradeOption::class);
+    }
 }

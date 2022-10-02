@@ -16,4 +16,9 @@ class GradeOption extends Model
     {
         return $this->belongsTo(Grade::class);
     }
+
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
 }
