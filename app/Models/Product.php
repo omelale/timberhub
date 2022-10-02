@@ -20,4 +20,10 @@ class Product extends Model
         'width',
         'length',
     ];
+
+    public function supplier()
+    {
+        return $this->belongsTo(Supplier::class);
+    }
+    
 }
