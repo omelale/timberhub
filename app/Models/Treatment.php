@@ -11,4 +11,9 @@ class Treatment extends Model
 
     protected $table = 'treatments';
     protected $fillable = ['name'];
+
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
 }

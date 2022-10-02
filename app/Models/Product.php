@@ -35,4 +35,9 @@ class Product extends Model
     {
         return $this->belongsTo(DryingMethod::class);
     }
+
+    public function treatment()
+    {
+        return $this->belongsTo(Treatment::class);
+    }
 }
