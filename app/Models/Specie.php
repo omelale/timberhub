@@ -11,4 +11,9 @@ class Specie extends Model
 
     protected $table = 'species';
     protected $fillable = ['name'];
+
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
 }
