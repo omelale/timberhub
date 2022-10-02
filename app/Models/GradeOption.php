@@ -12,4 +12,8 @@ class GradeOption extends Model
     protected $table = 'grade_options';
     protected $fillable = ['name', 'grade_id'];
 
+    public function grade()
+    {
+        return $this->belongsTo(Grade::class);
+    }
 }

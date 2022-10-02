@@ -11,4 +11,9 @@ class Grade extends Model
 
     protected $table = 'grades';
     protected $fillable = ['name'];
+
+    public function gradeOptions()
+    {
+        return $this->hasMany(GradeOption::class);
+    }
 }
