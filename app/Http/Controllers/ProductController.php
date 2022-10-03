@@ -36,8 +36,15 @@ class ProductController extends Controller
         $treatments = Treatment::all();
         $grades = Grade::all();
         $gradeOptions = GradeOption::all();
+        $options = [];
+        foreach ($grades as $grade) {
+            $filtered = $gradeOptions->filter(function ($value, $key) use ($grade) {
+                return $value->grade_id == $grade->id;
+            });
+            $options[$grade->id] = $filtered;
+        }
         $dryingMethods = DryingMethod::all();
-        return view('products.create', compact('suppliers', 'species', 'treatments', 'grades', 'gradeOptions', 'dryingMethods'));
+        return view('products.create', compact('suppliers', 'species', 'treatments', 'grades', 'gradeOptions', 'dryingMethods', 'options'));
     }
 
     /**
