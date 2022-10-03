@@ -9,11 +9,12 @@
 </head>
 
 <body>
+    @include('partials.navbar')
     <h1 class="text-3xl font-bold underline">
-        Hello world!
         @yield('content')
     </h1>
     @include('partials.footer')
+    <script src="https://unpkg.com/flowbite@1.5.3/dist/flowbite.js"></script>
 </body>
 
 </html>
