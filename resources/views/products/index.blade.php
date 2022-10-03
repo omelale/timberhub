@@ -3,18 +3,16 @@
 @section('content')
     <div class="container-fluid mt-5">
         @if (count($products) > 0)
-            <h1 class="text-3xl font-bold underline">
-                Browse our products
-            </h1>
-            <ul>
-                @foreach ($products as $product)
-                    <li>
-                        <a href="{{ route('products.show', $product) }}">
-                            {{ $product->name }}
-                        </a>
-                    </li>
-                @endforeach
-            </ul>
+            <div class="container mx-auto">
+                <h1 class="text-3xl font-bold underline">
+                    Browse our products
+                </h1>
+                <ul>
+                    @foreach ($products as $product)
+                        @include('partials.productList', ['product' => $product])
+                    @endforeach
+                </ul>
+            </div>
         @else
             <div class="container mx-auto ">
                 <h2 class="text-3xl mb-4 font-bold ">
