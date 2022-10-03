@@ -23,7 +23,7 @@ class Product extends Model
 
     public function supplier()
     {
-        return $this->belongsTo(Supplier::class);
+        return $this->belongsToMany(Supplier::class, 'supplier_products', 'product_id', 'supplier_id');
     }
 
     public function species()
