@@ -2,7 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DryingMethod;
+use App\Models\Grade;
+use App\Models\GradeOption;
 use App\Models\Product;
+use App\Models\Specie;
+use App\Models\Supplier;
+use App\Models\Treatment;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -25,7 +31,13 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        $suppliers = Supplier::all();
+        $species = Specie::all();
+        $treatments = Treatment::all();
+        $grades = Grade::all();
+        $gradeOptions = GradeOption::all();
+        $dryingMethods = DryingMethod::all();
+        return view('products.create', compact('suppliers', 'species', 'treatments', 'grades', 'gradeOptions', 'dryingMethods'));
     }
 
     /**
