@@ -11,7 +11,9 @@
 <body>
     <div class="flex flex-col h-screen justify-between">
         @include('partials.navbar')
-        @yield('content')
+        <div class="mb-auto">
+            @yield('content')
+        </div>
         @include('partials.footer')
     </div>
     <script src="https://unpkg.com/flowbite@1.5.3/dist/flowbite.js"></script>
