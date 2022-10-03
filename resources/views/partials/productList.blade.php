@@ -1,5 +1,6 @@
-<li>
+<li class="mb-2">
     <a href="{{ route('products.show', $product) }}">
+        🪵
         {{ $product->species->name }},
         {{ $product->gradeOption->grade->name . '/' . $product->gradeOption->name }},
         {{ $product->dryingMethod->name }},
