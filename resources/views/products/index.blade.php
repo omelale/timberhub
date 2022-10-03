@@ -1,7 +1,8 @@
 @extends('layouts.app')
+@section('title', 'Products')
 @section('content')
     <h1 class="text-3xl font-bold underline">
-        Products!
+        Products
     </h1>
     <ul>
         @foreach ($products as $product)
