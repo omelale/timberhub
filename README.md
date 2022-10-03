@@ -15,11 +15,13 @@ composer install
 
 create a table in the database named timberhub
 
-make env file with correct information
+make env file and add database name 'timberhub'
 
 run migrations
 
 run seeders
+
+install node if not present in machine
 
 php artisan serve
 - [Simple, fast routing engine](https://laravel.com/docs/routing).
