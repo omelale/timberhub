@@ -4,9 +4,9 @@
     <div class="container-fluid mt-5">
         <div class="container mx-auto ">
             <h1 class="text-3xl mb-5 font-bold underline">
-                View product
+                View product details
             </h1>
-            <div class="mb-6">
+            <div class="mt-5 mb-6">
                 <label for="species" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Specie</label>
                 <h2>{{ $product->species->name }}</h2>
             </div>
