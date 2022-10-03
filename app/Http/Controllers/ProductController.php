@@ -10,6 +10,8 @@ use App\Models\Specie;
 use App\Models\Supplier;
 use App\Models\Treatment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Redirect;
 
 class ProductController extends Controller
 {
@@ -129,6 +131,8 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        $product->delete();
+        Session::flash('message', 'Successfully deleted the product!');
+        return Redirect::to('products');
     }
 }
