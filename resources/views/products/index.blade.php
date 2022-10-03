@@ -4,10 +4,10 @@
     <div class="container-fluid mt-5">
         @if (count($products) > 0)
             <div class="container mx-auto">
-                <h1 class="text-3xl font-bold underline">
+                <h1 class="text-3xl mb-5 font-bold underline">
                     Browse our products
                 </h1>
-                <ul>
+                <ul >
                     @foreach ($products as $product)
                         @include('partials.productList', ['product' => $product])
                     @endforeach
