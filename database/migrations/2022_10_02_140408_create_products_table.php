@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('species_id')->constrained('species');
             $table->foreignId('drying_method_id')->constrained('drying_methods');
-            $table->foreignId('treatment_id')->constrained('treatments')->nullable();
+            $table->foreignId('treatment_id')->nullable()->constrained('treatments');
             $table->foreignId('grade_option_id')->constrained('grade_options');
             $table->integer('thickness');
             $table->integer('width');
