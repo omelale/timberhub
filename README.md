@@ -6,7 +6,7 @@
 
 - Navigate inside that folder and run `composer install`
 
-- Create a new database table named timberhub
+- Create a new database table named `timberhub`
 
 - Create .env file and add table name `timberhub`
 
