@@ -17,4 +17,9 @@ class SupplierController extends Controller
     {
         return view('suppliers.show', compact('supplier'));
     }
+
+    public function addProducts(Supplier $supplier)
+    {
+        return view('suppliers.addProducts', compact('supplier'));
+    }
 }
