@@ -11,6 +11,7 @@ class GradeOption extends Model
 
     protected $table = 'grade_options';
     protected $fillable = ['name', 'grade_id'];
+    protected $with = ['grade'];
 
     public function grade()
     {
