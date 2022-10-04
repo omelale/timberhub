@@ -45,33 +45,9 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $species = Specie::all();
-        $speciesIds = $species->pluck('id');
-        $treatments = Treatment::all();
-        $treatmentIds = $treatments->pluck('id');
-        $gradeOptions = GradeOption::all();
-        $gradeOptionIds = $gradeOptions->pluck('id');
-        $dryingMethods = DryingMethod::all();
-        $dryingMethodIds = $dryingMethods->pluck('id');
-        $validated = $request->validate([
-            'species' => 'required|in:' . $speciesIds->join(','),
-            'dryingMethod' => 'required|in:' . $dryingMethodIds->join(','),
-            'grade' => 'required|in:' . $gradeOptionIds->join(','),
-            'thickness' => 'required|numeric|gt:0',
-            'width' => 'required|numeric|gt:0',
-            'length' => 'required|numeric|gt:0',
-            'treatment' => 'nullable|in:' . $treatmentIds->join(','),
-        ]);
-        // check if i should save like this or save through relationship
+        $validated = $this->validateProduct($request);
         $product = new Product();
-        $product->species_id = $validated['species'];
-        $product->drying_method_id = $validated['dryingMethod'];
-        $product->grade_option_id = $validated['grade'];
-        $product->thickness = $validated['thickness'];
-        $product->width = $validated['width'];
-        $product->length = $validated['length'];
-        $product->treatment_id = $validated['treatment'] !== null ? $validated['treatment'] : null;
-        $product->save();
+        $this->saveProduct($validated, $product);
         Session::flash('message', 'Successfully created the product!');
         return redirect()->route('products.index');
     }
@@ -108,7 +84,10 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        $validated = $this->validateProduct($request);
+        $this->saveProduct($validated, $product);
+        Session::flash('message', 'Successfully updated the product!');
+        return redirect()->route('products.index');
     }
 
     /**
@@ -124,7 +103,7 @@ class ProductController extends Controller
         return Redirect::to('products');
     }
 
-    protected function getOptions()
+    private function getOptions()
     {
         $suppliers = Supplier::all();
         $species = Specie::all();
@@ -140,5 +119,39 @@ class ProductController extends Controller
         }
         $dryingMethods = DryingMethod::all();
         return compact('suppliers', 'species', 'treatments', 'grades', 'gradeOptions', 'dryingMethods', 'options');
+    }
+
+    private function validateProduct(Request $request)
+    {
+        $species = Specie::all();
+        $speciesIds = $species->pluck('id');
+        $treatments = Treatment::all();
+        $treatmentIds = $treatments->pluck('id');
+        $gradeOptions = GradeOption::all();
+        $gradeOptionIds = $gradeOptions->pluck('id');
+        $dryingMethods = DryingMethod::all();
+        $dryingMethodIds = $dryingMethods->pluck('id');
+        $validated = $request->validate([
+            'species' => 'required|in:' . $speciesIds->join(','),
+            'dryingMethod' => 'required|in:' . $dryingMethodIds->join(','),
+            'grade' => 'required|in:' . $gradeOptionIds->join(','),
+            'thickness' => 'required|numeric|gt:0',
+            'width' => 'required|numeric|gt:0',
+            'length' => 'required|numeric|gt:0',
+            'treatment' => 'nullable|in:' . $treatmentIds->join(','),
+        ]);
+        return $validated;
+    }
+
+    private function saveProduct($validated, $product)
+    {
+        $product->species_id = $validated['species'];
+        $product->drying_method_id = $validated['dryingMethod'];
+        $product->grade_option_id = $validated['grade'];
+        $product->thickness = $validated['thickness'];
+        $product->width = $validated['width'];
+        $product->length = $validated['length'];
+        $product->treatment_id = $validated['treatment'] !== null ? $validated['treatment'] : null;
+        $product->save();
     }
 }
