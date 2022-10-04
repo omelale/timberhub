@@ -97,6 +97,19 @@ class ProductController extends Controller
     public function update(Request $request, Product $product)
     {
         $validated = $this->validateProduct($request);
+        $potential = Product::where('species_id', $validated['species'])
+            ->where('drying_method_id', $validated['dryingMethod'])
+            ->where('treatment_id', $validated['treatment'])
+            ->where('grade_option_id', $validated['grade'])
+            ->where('thickness', $validated['thickness'])
+            ->where('width', $validated['width'])
+            ->where('length', $validated['length'])
+            ->where('id', '!=', $product->id)
+            ->first();
+        if ($potential) {
+            Session::flash('error', 'Product already exists');
+            return Redirect::back();
+        }
         $this->saveProduct($validated, $product);
         Session::flash('message', 'Successfully updated the product!');
         return redirect()->route('products.index');
