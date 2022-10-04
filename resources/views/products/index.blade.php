@@ -4,9 +4,15 @@
     <div class="container-fluid mt-5">
         @if (count($products) > 0)
             <div class="container mx-auto">
-                <h1 class="text-3xl mb-5 font-bold underline">
-                    Browse our products
-                </h1>
+                <div class="flex mb-5">
+                    <h1 class="text-3xl mb-5 font-bold underline">
+                        Browse our products
+                    </h1>
+                    {{-- show inline link to create new product tailwind --}}
+                    <a href="{{ route('products.create') }}" class="ml-auto inline-flex items-center px-5 py-3 border border-transparent text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-500 focus:outline-none focus:border-green-700 focus:shadow-outline-green active:bg-green-700 transition duration-150 ease-in-out">
+                        Create new product
+                    </a>
+                </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                     @foreach ($products as $product)
                         @include('partials.productList', ['product' => $product])
