@@ -13,7 +13,7 @@
             <h2 class="text-xl mb-5 font-bold">
                 Products
             </h2>
-            @if (count($products) > 0)
+            @if (count($allProducts) > 0)
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-5">
                     @foreach ($products as $product)
                         @include('partials.productList', ['product' => $product])

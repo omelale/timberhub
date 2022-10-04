@@ -17,8 +17,9 @@ class SupplierController extends Controller
 
     public function show(Supplier $supplier)
     {
+        $allProducts = Product::all();
         $products = $supplier->products;
-        return view('suppliers.show', compact('supplier', 'products'));
+        return view('suppliers.show', compact('supplier', 'products', 'allProducts'));
     }
 
     public function addProducts(Supplier $supplier)
