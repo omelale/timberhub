@@ -18,7 +18,7 @@ class SupplierController extends Controller
     public function show(Supplier $supplier)
     {
         $allProducts = Product::all();
-        $products = $supplier->products;
+        $products = $supplier->products->load('species', 'dryingMethod', 'treatment', 'gradeOption');
         return view('suppliers.show', compact('supplier', 'products', 'allProducts'));
     }
 
