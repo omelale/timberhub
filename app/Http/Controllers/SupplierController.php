@@ -12,4 +12,9 @@ class SupplierController extends Controller
         $suppliers = Supplier::all();
         return view('suppliers.index', compact('suppliers'));
     }
+
+    public function show(Supplier $supplier)
+    {
+        return view('suppliers.show', compact('supplier'));
+    }
 }
