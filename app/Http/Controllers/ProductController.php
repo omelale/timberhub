@@ -33,20 +33,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $suppliers = Supplier::all();
-        $species = Specie::all();
-        $treatments = Treatment::all();
-        $grades = Grade::all();
-        $gradeOptions = GradeOption::all();
-        $options = [];
-        foreach ($grades as $grade) {
-            $filtered = $gradeOptions->filter(function ($value, $key) use ($grade) {
-                return $value->grade_id == $grade->id;
-            });
-            $options[$grade->id] = $filtered;
-        }
-        $dryingMethods = DryingMethod::all();
-        return view('products.create', compact('suppliers', 'species', 'treatments', 'grades', 'gradeOptions', 'dryingMethods', 'options'));
+        $data = $this->getOptions();
+        return view('products.create', compact('data'));
     }
 
     /**
@@ -107,7 +95,8 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        $data = $this->getOptions();
+        return view('products.edit', compact('data', 'product'));
     }
 
     /**
@@ -133,5 +122,23 @@ class ProductController extends Controller
         $product->delete();
         Session::flash('message', 'Successfully deleted the product!');
         return Redirect::to('products');
+    }
+
+    protected function getOptions()
+    {
+        $suppliers = Supplier::all();
+        $species = Specie::all();
+        $treatments = Treatment::all();
+        $grades = Grade::all();
+        $gradeOptions = GradeOption::all();
+        $options = [];
+        foreach ($grades as $grade) {
+            $filtered = $gradeOptions->filter(function ($value, $key) use ($grade) {
+                return $value->grade_id == $grade->id;
+            });
+            $options[$grade->id] = $filtered;
+        }
+        $dryingMethods = DryingMethod::all();
+        return compact('suppliers', 'species', 'treatments', 'grades', 'gradeOptions', 'dryingMethods', 'options');
     }
 }

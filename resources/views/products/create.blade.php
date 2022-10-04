@@ -12,8 +12,8 @@
                 <div class="mb-6">
                     <label for="species" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Species</label>
                     <select id="species" name="species" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                        @foreach ($species as $specie)
-                            <option value="{{ $specie->id }}" {{ old('species') == $specie->id ? "selected" : "" }}>{{ $specie->name }}</option>
+                        @foreach ($data['species'] as $specie)
+                            <option value="{{ $specie->id }}" {{ old('species') == $specie->id ? 'selected' : '' }}>{{ $specie->name }}</option>
                         @endforeach
                     </select>
                     @error('species')
@@ -23,8 +23,8 @@
                 <div class="mb-6">
                     <label for="dryingMethod" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Drying method</label>
                     <select id="dryingMethod" name="dryingMethod" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                        @foreach ($dryingMethods as $dryingMethod)
-                            <option value="{{ $dryingMethod->id }}" {{ old('dryingMethod') == $dryingMethod->id ? "selected" : "" }}>{{ $dryingMethod->name }}</option>
+                        @foreach ($data['dryingMethods'] as $dryingMethod)
+                            <option value="{{ $dryingMethod->id }}" {{ old('dryingMethod') == $dryingMethod->id ? 'selected' : '' }}>{{ $dryingMethod->name }}</option>
                         @endforeach
                     </select>
                     @error('dryingMethods')
@@ -34,10 +34,10 @@
                 <div class="mb-6">
                     <label for="grade" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Grade</label>
                     <select id="grade" name="grade" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 @error('grade') border-red-500 text-red-900 @enderror">
-                        @foreach ($grades as $grade)
-                            @isset($options[$grade->id])
-                                @foreach ($options[$grade->id] as $option)
-                                    <option value="{{ $option->id }}" {{ old('grade') == $option->id ? "selected" : "" }}>{{ $grade->name }} - {{ $option->name }}</option>
+                        @foreach ($data['grades'] as $grade)
+                            @isset($data['options'][$grade->id])
+                                @foreach ($data['options'][$grade->id] as $option)
+                                    <option value="{{ $option->id }}" {{ old('grade') == $option->id ? 'selected' : '' }}>{{ $grade->name }} - {{ $option->name }}</option>
                                 @endforeach
                             @endisset
                         @endforeach
@@ -71,8 +71,8 @@
                     <label for="treatment" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Treatment (optional)</label>
                     <select id="treatment" name="treatment" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         <option selected value>-</option>
-                        @foreach ($treatments as $treatment)
-                            <option value="{{ $treatment->id }}" {{ old('treatment') == $treatment->id ? "selected" : "" }}>{{ $treatment->name }}</option>
+                        @foreach ($data['treatments'] as $treatment)
+                            <option value="{{ $treatment->id }}" {{ old('treatment') == $treatment->id ? 'selected' : '' }}>{{ $treatment->name }}</option>
                         @endforeach
                     </select>
                     @error('treatments')
