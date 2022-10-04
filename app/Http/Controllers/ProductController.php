@@ -61,8 +61,6 @@ class ProductController extends Controller
         $speciesIds = $species->pluck('id');
         $treatments = Treatment::all();
         $treatmentIds = $treatments->pluck('id');
-        $grades = Grade::all();
-        $gradeIds = $grades->pluck('id');
         $gradeOptions = GradeOption::all();
         $gradeOptionIds = $gradeOptions->pluck('id');
         $dryingMethods = DryingMethod::all();
@@ -84,7 +82,7 @@ class ProductController extends Controller
         $product->thickness = $validated['thickness'];
         $product->width = $validated['width'];
         $product->length = $validated['length'];
-        // $product->treatment_id = $validated['treatment'] !== null ? $validated['treatment'] : null;
+        $product->treatment_id = $validated['treatment'] !== null ? $validated['treatment'] : null;
         $product->save();
         Session::flash('message', 'Successfully created the product!');
         return redirect()->route('products.index');
