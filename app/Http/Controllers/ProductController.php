@@ -46,6 +46,18 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $validated = $this->validateProduct($request);
+        $potential = Product::where('species_id', $validated['species'])
+            ->where('drying_method_id', $validated['dryingMethod'])
+            ->where('treatment_id', $validated['treatment'])
+            ->where('grade_option_id', $validated['grade'])
+            ->where('thickness', $validated['thickness'])
+            ->where('width', $validated['width'])
+            ->where('length', $validated['length'])
+            ->first();
+        if ($potential) {
+            Session::flash('error', 'Product already exists');
+            return Redirect::back();
+        }
         $product = new Product();
         $this->saveProduct($validated, $product);
         Session::flash('message', 'Successfully created the product!');
