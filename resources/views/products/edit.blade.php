@@ -1,6 +1,6 @@
 {{-- create form to create product --}}
 @extends('layouts.app')
-@section('title', 'ùedit Product')
+@section('title', 'Edit Product')
 @section('content')
     <div class="container-fluid mt-5">
         <div class="container mx-auto ">
