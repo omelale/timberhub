@@ -2,23 +2,25 @@
 
 ## How to run 
 
-- `git clone` project
+- Run `git clone` to clone project into a desired folder
 
-- run `composer install` command
+- Navigate inside that folder and run `composer install`
 
-- create a table in the database named timberhub
+- Create a new database table named timberhub
 
-- make env file and add database name 'timberhub'
+- Create .env file and add table name `timberhub`
 
-- run migrations with `php artisan migrate`
+- Run migrations with command `php artisan migrate`
 
-- run seeders with command `php artisan db:seed`
+- Run seeders with command `php artisan db:seed`
 
-- install nodejs if not present in machine
+- Install nodejs if not present in machine
 
 - Open terminal and run `php artisan serve`
 
-- in another terminal run `npm run dev`
+- In another terminal run `npm run dev`
+
+- Open browser and navigate to [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
 
 
 all images and trademarks belong to Timberhub
