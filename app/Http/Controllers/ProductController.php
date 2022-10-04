@@ -103,6 +103,12 @@ class ProductController extends Controller
         return Redirect::to('products');
     }
 
+    /**
+     * Generate the options to populate the select forms
+     *
+     * @param  null
+     * @return Array
+     */
     private function getOptions()
     {
         $suppliers = Supplier::all();
@@ -121,6 +127,12 @@ class ProductController extends Controller
         return compact('suppliers', 'species', 'treatments', 'grades', 'gradeOptions', 'dryingMethods', 'options');
     }
 
+    /**
+     * Validate the product data
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @return Array
+     */
     private function validateProduct(Request $request)
     {
         $species = Specie::all();
@@ -143,6 +155,13 @@ class ProductController extends Controller
         return $validated;
     }
 
+    /**
+     * Save the product data
+     *
+     * @param  Array $validated
+     * @param  \App\Models\Product $product
+     * @return null
+     */
     private function saveProduct($validated, $product)
     {
         $product->species_id = $validated['species'];
