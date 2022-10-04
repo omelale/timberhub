@@ -7,11 +7,11 @@
                 <h1 class="text-3xl mb-5 font-bold underline">
                     Browse our products
                 </h1>
-                <ul >
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                     @foreach ($products as $product)
                         @include('partials.productList', ['product' => $product])
                     @endforeach
-                </ul>
+                </div>
             </div>
         @else
             <div class="container mx-auto ">
