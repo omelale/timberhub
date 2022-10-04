@@ -86,6 +86,7 @@ class ProductController extends Controller
         $product->length = $validated['length'];
         // $product->treatment_id = $validated['treatment'] !== null ? $validated['treatment'] : null;
         $product->save();
+        Session::flash('message', 'Successfully created the product!');
         return redirect()->route('products.index');
     }
 
