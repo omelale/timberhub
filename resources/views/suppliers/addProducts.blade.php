@@ -26,7 +26,6 @@
                             </option>
                         @endforeach
                     </select>
-
                     <div x-data="dropdown()" x-init="loadOptions()" class="w-full md:w-1/2 flex flex-col items-center h-64 mx-auto">
                         <form>
                             <input name="values" type="hidden" x-bind:value="selectedValues()">
@@ -36,7 +35,7 @@
                                         <div class="my-2 p-1 flex border border-gray-200 bg-white rounded svelte-1l8159u">
                                             <div class="flex flex-auto flex-wrap">
                                                 <template x-for="(option,index) in selected" :key="options[option].value">
-                                                    <div class="flex justify-center items-center m-1 font-medium py-1 px-2 bg-white rounded-full text-teal-700 bg-teal-100 border border-teal-300 ">
+                                                    <div class="flex justify-center items-center m-1 font-medium py-2 px-4 bg-white rounded-full text-teal-700 bg-teal-100 border border-teal-300 ">
                                                         <div class="text-xs font-normal leading-none max-w-full flex-initial x-model=" options[option]" x-text="options[option].text"></div>
                                                         <div class="flex flex-auto flex-row-reverse">
                                                             <div x-on:click="remove(index,option)">
@@ -67,7 +66,7 @@
                                                         <path d="M2.582,13.891c-0.272,0.268-0.709,0.268-0.979,0s-0.271-0.701,0-0.969l7.908-7.83
 	c0.27-0.268,0.707-0.268,0.979,0l7.908,7.83c0.27,0.268,0.27,0.701,0,0.969c-0.271,0.268-0.709,0.268-0.978,0L10,6.75L2.582,13.891z
 	" />
-                                                   </svg>
+                                                    </svg>
                                                 </button>
                                             </div>
                                         </div>
@@ -97,6 +96,7 @@
                 </div>
             </div>
         </div>
+    </div>
     </div>
 @endsection
 @section('scripts')
