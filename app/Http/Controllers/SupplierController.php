@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use App\Models\Supplier;
 use Illuminate\Http\Request;
 
@@ -19,7 +20,8 @@ class SupplierController extends Controller
     }
 
     public function addProducts(Supplier $supplier)
-    {
-        return view('suppliers.addProducts', compact('supplier'));
+    {   
+        $products = Product::with('species', 'dryingMethod', 'treatment', 'gradeOption')->get();
+        return view('suppliers.addProducts', compact('supplier', 'products'));
     }
 }

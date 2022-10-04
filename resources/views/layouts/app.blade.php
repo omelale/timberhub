@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Timberhub - @yield('title')</title>
+    @yield('css')
     @vite('resources/css/app.css')
 </head>
 
@@ -22,6 +23,7 @@
         @include('partials.footer')
     </div>
     <script src="https://unpkg.com/flowbite@1.5.3/dist/flowbite.js"></script>
+    @yield('scripts')
 </body>
 
 </html>
