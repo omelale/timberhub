@@ -9,13 +9,10 @@
                         <h2 class="text-lg leading-6 font-medium text-gray-900">
                             {{ $product->species->name }},
                             {{ $product->gradeOption->grade->name . '/' . $product->gradeOption->name }},
-                            {{ $product->dryingMethod->name }},
-                            {{ $product->treatment !== null ? $product->treatment->name . ',' : '' }}
+                            {{ $product->dryingMethod->name }}{{ $product->treatment !== null ? ', ' . $product->treatment->name : '' }}
                         </h2>
                         <p class="text-md mt-2 leading-5 text-gray-500">
-                            {{ $product->thickness }} x
-                            {{ $product->width }} x
-                            {{ $product->length }}
+                            {{ $product->thickness }} x {{ $product->width }} x {{ $product->length }}
                         </p>
                     </div>
                 </div>
